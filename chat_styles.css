@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e4e6eb;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen {
+    width: 100%;
+    max-width: 500px;
+    height: 90vh;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    color: #8ab4f8;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 28px;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #b0b3b8;
+}
+
+.login-options {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.login-option-btn {
+    background-color: #3a3a3a;
+    color: #b0b3b8;
+    border: 1px solid #4a4a4a;
+    padding: 12px 24px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-option-btn:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.login-option-btn:last-child {
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+}
+
+.login-option-btn.active {
+    background-color: #8ab4f8;
+    color: #000000;
+}
+
+.login-option-btn:hover {
+    background-color: #4a4a4a;
+}
+
+.login-option-btn.active:hover {
+    background-color: #a4c8fa;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #e4e6eb;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #2d2d2d;
+    color: #e4e6eb;
+}
+
+.phone-input-container {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.phone-input-container select {
+    flex: 0 0 120px;
+}
+
+.phone-input-container input {
+    flex: 1;
+}
+
+.login-btn {
+    background-color: #8ab4f8;
+    color: #000000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    background-color: #a4c8fa;
+}
+
+.error-message {
+    color: #f28b82;
+    margin-top: 15px;
+    text-align: center;
+    min-height: 20px;
+}
+
+.chat-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #2d2d2d;
+    color: #e4e6eb;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.country-tag {
+    background-color: #4caf50;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.messages-container {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #121212;
+}
+
+.message {
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+    word-wrap: break-word;
+    border: 1px solid #4a4a4a;
+}
+
+.message.own {
+    background-color: #3a3a3a;
+    margin-left: auto;
+}
+
+.input-area {
+    display: flex;
+    padding: 15px;
+    background-color: #2d2d2d;
+    border-top: 1px solid #4a4a4a;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    background-color: #1e1e1e;
+    color: #e4e6eb;
+}
+
+#sendButton {
+    border-radius: 0 5px 5px 0;
+    padding: 12px 20px;
+    background-color: #8ab4f8;
+    color: #000000;
+    border: none;
+    font-weight: bold;
+}
+
+#sendButton:hover {
+    background-color: #a4c8fa;
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 0;
+        height: 100vh;
+    }
+    
+    .screen {
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .phone-input-container {
+        flex-direction: column;
+    }
+    
+    .phone-input-container select {
+        flex: unset;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anominie - Anonymous Chat</title>
+    <link rel="stylesheet" href="chat_styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen">
+        <div class="container">
+            <h1>Anominie</h1>
+            <p>Connect anonymously with people around the world</p>
+            
+            <form id="loginForm">
+                <div class="login-options">
+                    <button type="button" id="emailLoginBtn" class="login-option-btn active">Email</button>
+                    <button type="button" id="phoneLoginBtn" class="login-option-btn">Phone</button>
+                </div>
+                
+                <div id="emailLoginSection">
+                    <label for="email">Enter your email:</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div id="phoneLoginSection" class="hidden">
+                    <label for="phone">Enter your phone number:</label>
+                    <div class="phone-input-container">
+                        <select id="countryCode" required>
+                            <option value="+1">🇺🇸 +1 (US)</option>
+                            <option value="+44">🇬🇧 +44 (UK)</option>
+                            <option value="+33">🇫🇷 +33 (FR)</option>
+                            <option value="+49">🇩🇪 +49 (DE)</option>
+                            <option value="+81">🇯🇵 +81 (JP)</option>
+                            <option value="+91">🇮🇳 +91 (IN)</option>
+                            <option value="+55">🇧🇷 +55 (BR)</option>
+                            <option value="+27">🇿🇦 +27 (ZA)</option>
+                            <option value="+39">🇮🇹 +39 (IT)</option>
+                            <option value="+7">🇷🇺 +7 (RU)</option>
+                            <option value="+86">🇨🇳 +86 (CN)</option>
+                            <option value="+34">🇪🇸 +34 (ES)</option>
+                            <option value="+61">🇦🇺 +61 (AU)</option>
+                            <option value="+52">🇲🇽 +52 (MX)</option>
+                            <option value="+82">🇰🇷 +82 (KR)</option>
+                        </select>
+                        <input type="tel" id="phone" placeholder="(234) 567-8900" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn">Continue</button>
+            </form>
+            
+            <div id="loginError" class="error-message"></div>
+        </div>
+    </div>
+    
+    <!-- Profile Setup Screen -->
+    <div id="profileScreen" class="screen hidden">
+        <div class="container">
+            <h1>Set Up Your Profile</h1>
+            <p>This information will help us connect you with others</p>
+            
+            <form id="profileForm">
+                <label for="username">Choose a username:</label>
+                <input type="text" id="username" placeholder="Enter your username" required maxlength="30">
+                
+                <label for="country">Select your country:</label>
+                <select id="country" required>
+                    <option value="">-- Select Country --</option>
+                    <option value="USA">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="Japan">Japan</option>
+                    <option value="India">India</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+                <button type="submit">Start Chatting</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Chat Screen -->
+    <div id="chatScreen" class="screen hidden">
+        <div class="chat-container">
+            <div class="header">
+                <div class="user-info">
+                    <span id="displayUsername">User</span> 
+                    <span class="country-tag" id="displayCountry">(Unknown)</span>
+                </div>
+                <p>You are chatting anonymously. Be respectful!</p>
+            </div>
+            
+            <div id="messagesContainer" class="messages-container">
+                <!-- Messages will appear here -->
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Type your message..." maxlength="500">
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="chat_script.js"></script>
+</body>
+</html>
