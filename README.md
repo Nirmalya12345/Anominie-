@@ -61,7 +61,7 @@ Anominie- is an experimental project that provides a safe, anonymous space for u
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Nirmalya12345/Anominie-
+   git clone https://github.com/Nirmalya-C/Anominie-
    cd Anominie-
    ```
 
@@ -149,7 +149,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Nirmalya12345** - [GitHub Profile](https://github.com/Nirmalya12345)
+**Nirmalya-C** - [GitHub Profile](https://github.com/Nirmalya-C)
 
 ---
 
@@ -165,4 +165,4 @@ This is an experimental project. Use at your own risk. Ensure compliance with al
 
 ---
 
-**Last Updated**: 2026-03-10 06:43:42
+**Last Updated**: 2026-03-24
