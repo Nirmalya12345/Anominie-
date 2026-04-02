@@ -12,6 +12,31 @@ app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 
 let db = null;
+const rateLimitStore = new Map();
+const RATE_LIMIT_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS) || 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = Number(process.env.RATE_LIMIT_MAX_REQUESTS) || 120;
+
+function apiRateLimit(req, res, next) {
+  const now = Date.now();
+  const ip = (req.headers['x-forwarded-for'] || req.ip || req.socket?.remoteAddress || 'unknown')
+    .toString()
+    .split(',')[0]
+    .trim();
+  const key = `${ip}:${req.path}`;
+
+  const current = rateLimitStore.get(key);
+  if (!current || now > current.resetAt) {
+    rateLimitStore.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return next();
+  }
+
+  current.count += 1;
+  if (current.count > RATE_LIMIT_MAX_REQUESTS) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+  }
+
+  return next();
+}
 
 async function connectDatabase() {
   if (!mongoUri) {
@@ -42,7 +67,7 @@ app.get('/health', async (_req, res) => {
   });
 });
 
-app.get('/api/messages', async (_req, res) => {
+app.get('/api/messages', apiRateLimit, async (_req, res) => {
   if (!db) {
     return res.status(200).json({ messages: [] });
   }
@@ -57,7 +82,7 @@ app.get('/api/messages', async (_req, res) => {
   return res.status(200).json({ messages: messages.reverse() });
 });
 
-app.post('/api/messages', async (req, res) => {
+app.post('/api/messages', apiRateLimit, async (req, res) => {
   const { sender, text } = req.body || {};
 
   if (!sender || !text || typeof sender !== 'string' || typeof text !== 'string') {
